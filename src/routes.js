@@ -16,7 +16,7 @@ export default new router({
       component: Profile 
     },
     {
-      path: '/entry/:id',
+      path: '/entries/:id',
       name: 'show-entry',
       component: ShowEntry,
       props: true

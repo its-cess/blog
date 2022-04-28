@@ -22,16 +22,20 @@
 export default {
   data() {
     return {
-      entry: {
-        id: 3,
-        title: '',
-        body: ''
-      }
+      entry: this.createNewEntry()
     };
   },
   methods: {
     createEntry() {
       this.$store.dispatch("entries/createEntry", this.entry)
+    },
+    createEntryObject() {
+      const id = Math.foor(Math.random() * 10000000)
+      return {
+        id: id,
+        title: '',
+        body: ''
+      }
     },
     // createId() {
     //   const id = this.$store.state.entries.id++;

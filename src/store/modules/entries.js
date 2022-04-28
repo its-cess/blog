@@ -4,11 +4,7 @@ export const namespaced = true
 
 export const state = {
   entries: [],
-  // entry: {
-  //   id: '',
-  //   title: '',
-  //   body: ''
-  // }
+  entry: {}
 }
 
 export const mutations = {
@@ -18,9 +14,9 @@ export const mutations = {
   ADD_ENTRY(state, entry) {  
     state.entries.push(entry)
   },
-  // SET_ENTRY(state, entry) {
-  //   state.entry = entry;
-  // },
+  SET_ENTRY(state, entry) {
+    state.entry = entry;
+  },
 }
 
 export const actions = {
@@ -28,7 +24,6 @@ export const actions = {
     return EntryServices.getEntries() 
     .then(response => {
       commit('SET_ENTRIES', response.data.data) 
-      console.log(response.data.data)
     })
   },
   createEntry({ commit }, entry) {
@@ -37,6 +32,12 @@ export const actions = {
       commit('ADD_ENTRY', entry)  
     })
   },
+  fetchEntry({ commit }){
+    return EntryServices.getEntry()
+    .then(response => {
+      commit('SET_ENTRY', response.data.data.attributes)
+    })
+  }
 }
 
 
@@ -62,8 +63,8 @@ export const getters = {
   getEntries(state) {
     return state.entries
   },
-  // getEntry(state) {
-  //   return state.entry
-  // }
+  getEntry(state) {
+    return state.entries.entry
+  }
 
 }

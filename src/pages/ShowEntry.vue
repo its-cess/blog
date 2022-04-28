@@ -1,15 +1,25 @@
-<!--EventShow.vue-->
+<!--EventShow.vue
+fetching/displaying info from API correcrly. 
+now need to make the id in API call dynamic and changes depending on which entry is clicked
+ -->
 <template>
  <div class="entry-container">
-   <h2>Title</h2>
-   <p>Body</p>
+   <h2>{{ entries.entry.Title }}</h2>
+   <p>{{ entries.entry.Body }}</p>
  </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   created() {
-    //fetchEntryById??? how to get Id???
+    this.$store.dispatch("entries/fetchEntry")
+  },
+  computed: {
+    ...mapState(['entries'])
+    //mapGetters?? entries.js >getters >getEntry to be able to display Title without having to 
+    //add entries.entry before????
   },
 }
 </script>
