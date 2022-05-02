@@ -29,6 +29,8 @@ export const actions = {
     return EntryServices.postEntry(entry)
     .then(() => {
       commit('ADD_ENTRY', entry)  
+    }).catch(error => {
+      console.log(error)
     })
   },
   // async fetchEntry({ commit }) {

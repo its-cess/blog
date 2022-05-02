@@ -1,14 +1,17 @@
 <template>
   <div class="form-container">
-    <form @submit.prevent="createEntry">
+    <form @submit.prevent="createNewEntry">
       <h4>New Post</h4>
       <div class="input">
-        <b-form-input placeholder="Title" v-model="entry.title" />
+        <b-form-input
+          placeholder="Title"
+          v-model="entry.data.attributes.Title"
+        />
       </div>
       <div>
         <b-form-textarea
           placeholder="Blog away!"
-          v-model="entry.body"
+          v-model="entry.data.attributes.Body"
           rows="8"
           no-resize
         ></b-form-textarea>
@@ -22,35 +25,38 @@
 export default {
   data() {
     return {
-      entry: this.createNewEntry()
+      entry: {
+        data: {
+          id: this.createId(),
+          attributes: {
+            Title: "",
+            Body: ""
+          }
+        }
+      }
     };
   },
   methods: {
-    createEntry() {
-      this.$store.dispatch("entries/createEntry", this.entry)
+    createNewEntry() {
+      this.$store.dispatch("entries/createEntry", this.entry);
     },
-    createEntryObject() {
-      const id = Math.foor(Math.random() * 10000000)
-      return {
-        id: id,
-        title: '',
-        body: ''
-      }
-    },
-    // createId() {
-    //   const id = this.$store.state.entries.id++;
+    createId() {
+      const id = Math.floor(Math.random() * 10000000);
+      return id;
+    }
+    // createEntryObject() {
+    //   const id = Math.floor(Math.random() * 10000000)
     //   return {
-    //     id: id,
+    //     data: {
+    //       "id": id,
+    //       "attributes": {
+    //         Title: '',
+    //         Body: ''
+    //       }
+    //     }
+
     //   }
-    // }
-    // createNewEntryObject() {
-    //   const id = this.$store.state.entries.id++;
-    //   return {
-    //     id: id,
-    //     title: "",
-    //     body: "",
-    //   };
-    // }
+    // },
   }
 };
 </script>

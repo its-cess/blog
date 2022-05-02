@@ -1,16 +1,8 @@
-<!--EventShow.vue
-fetching/displaying info from API correcrly. 
-now need to make the id in API call dynamic and changes depending on which entry is clicked
- -->
+<!--EventShow.vue-->
 <template>
  <div class="entry-container">
-   <!-- <h2>{{ entry }}</h2> -->
    <h2>{{ entry.attributes.Title }}</h2>
    <p>{{ entry.attributes.Body }}</p>
-   <!-- <h2>{{ entries.entry.Title }}</h2> -->
-   <!-- <h2>{{ entries.entry.attributes.Title }}</h2> -->
-   <!-- <p>{{ entries.entry.Body }}</p> -->
-   <!-- <p>{{ entries.entry.attributes.Body }}</p> -->
  </div>
 </template>
 

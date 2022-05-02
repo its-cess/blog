@@ -16,11 +16,4 @@ export default {
   getEntries() {
     return apiClient.get('entries')
   },
-  //need to make this api endpoint dynamic (like example below... but how???)
-  // getEntry() {
-  //   return apiClient.get('entries/1')
-  // }
-  // getEntry(id) {
-  //   return apiClient.get('entries/' + id)
-  // }
 }
