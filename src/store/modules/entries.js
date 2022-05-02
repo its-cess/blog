@@ -32,39 +32,20 @@ export const actions = {
       commit('ADD_ENTRY', entry)  
     })
   },
-  fetchEntry({ commit }){
-    return EntryServices.getEntry()
-    .then(response => {
-      commit('SET_ENTRY', response.data.data.attributes)
-    })
-  }
+  // async fetchEntry({ commit }) {
+  //   await EntryServices.getEntry()
+  //   .then(response => {
+  //     commit('SET_ENTRY', response.data.data)
+  //   })
+  // },
 }
-
-
-  // fetchEntry({ commit, getters }, id) {
-  //   var entry = getters.getEntryById(id)
-  //   if (entry) {
-  //     commit('SET_ENTRY', entry)
-  //   } else {
-  //     EntryServices.getEntry(id)
-  //       .then(response => {
-  //         commit('SET_ENTRY', response.data)
-  //       })
-  //       .catch(error => {
-  //         console.log(error)
-  //       })
-  //   }
-  // }
-//   fetchEntry({ commit }) {
-//     commit('SET_ENTRY')
-// },
-
+ 
+  
 export const getters = {
   getEntries(state) {
     return state.entries
   },
   getEntry(state) {
-    return state.entries.entry
+    return state.entries.entry.id
   }
-
 }
