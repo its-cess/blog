@@ -3,8 +3,7 @@ import EntryServices from "../../services/EntryServices"
 export const namespaced = true
 
 export const state = {
-  entries: [],
-  entry: {}
+  entries: []
 }
 
 export const mutations = {
