@@ -1,14 +1,16 @@
 <template>
   <!-- figure out why block size button is not working -->
   <div>
-    <b-button size="lg" class="btn" variant="primary">
+    <b-button :size="size" class="btn" :variant="variant">
       <slot></slot>
     </b-button>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: ['size', 'variant']
+};
 </script>
 
 <style scoped>

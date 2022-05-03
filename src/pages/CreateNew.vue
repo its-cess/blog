@@ -13,7 +13,7 @@
           no-resize
         ></b-form-textarea>
       </div>
-      <BaseButton>Submit</BaseButton>
+      <BaseButton size="lg" variant="primary">Submit</BaseButton>
     </form>
   </div>
 </template>

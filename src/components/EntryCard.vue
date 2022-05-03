@@ -7,12 +7,17 @@
         <p>{{ entry.attributes.Body }}</p>
       </div>
     </router-link>
-    <BaseButton @click.native="deletePost">Delete</BaseButton>
+    <BaseButton 
+      size="sm" 
+      variant="outline-primary" 
+      @click.native="deletePost"
+      >Delete
+    </BaseButton>
   </div>
 </template>
 
 <script>
-import BaseButton from '../base/BaseButton.vue'
+import BaseButton from "../base/BaseButton.vue";
 export default {
   components: { BaseButton },
   props: ["entry"],
