@@ -1,18 +1,20 @@
 <!-- working -->
 <template>
-  <div>
+  <div class="main-container">
     <router-link :to="{ name: 'show-entry', params: { id: entry.id } }">
       <div class="entry-card">
         <h3>{{ entry.attributes.Title }}</h3>
         <p>{{ entry.attributes.Body }}</p>
       </div>
     </router-link>
-    <BaseButton 
-      size="sm" 
-      variant="outline-primary" 
-      @click.native="deletePost"
-      >Delete
-    </BaseButton>
+    <div class="delete-container">
+      <BaseButton 
+        size="sm" 
+        variant="outline-primary" 
+        @click.native="deletePost"
+        >Delete
+      </BaseButton>
+    </div>
   </div>
 </template>
 
@@ -31,14 +33,22 @@ export default {
 </script>
 
 <style scoped>
+.main-container {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 3px solid #0275d8;
+}
 .entry-card {
-  margin: 2rem 0;
-  padding: 1rem;
-  border-right: 3px solid #0275d8;
+  margin: 2rem 0 0 0;
+  padding: 1rem 0 0 1rem;
   cursor: pointer;
 }
 a {
   text-decoration: none;
   color: inherit;
+}
+.delete-container {
+  display: flex;
+  justify-content: flex-end;
 }
 </style>
