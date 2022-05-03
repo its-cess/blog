@@ -13,15 +13,18 @@
           no-resize
         ></b-form-textarea>
       </div>
-      <BaseButton size="lg" variant="primary">Submit</BaseButton>
+      <button>
+        Submit
+      </button>
+      <!-- <BaseButton size="lg" variant="primary">Submit</BaseButton> -->
     </form>
   </div>
 </template>
 
 <script>
-import BaseButton from '../base/BaseButton.vue';
+// import BaseButton from '../base/BaseButton.vue';
 export default {
-  components: { BaseButton },
+  // components: { BaseButton },
   data() {
     return {
       entry: {
