@@ -7,12 +7,14 @@
         <p>{{ entry.attributes.Body }}</p>
       </div>
     </router-link>
-    <button @click="deletePost">Delete</button>
+    <BaseButton @click.native="deletePost">Delete</BaseButton>
   </div>
 </template>
 
 <script>
+import BaseButton from '../base/BaseButton.vue'
 export default {
+  components: { BaseButton },
   props: ["entry"],
   methods: {
     deletePost() {

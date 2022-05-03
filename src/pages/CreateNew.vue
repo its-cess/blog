@@ -13,13 +13,15 @@
           no-resize
         ></b-form-textarea>
       </div>
-      <button>Submit</button>
+      <BaseButton>Submit</BaseButton>
     </form>
   </div>
 </template>
 
 <script>
+import BaseButton from '../base/BaseButton.vue';
 export default {
+  components: { BaseButton },
   data() {
     return {
       entry: {
@@ -72,14 +74,5 @@ input {
 .btn-container {
   display: flex;
   justify-content: flex-end;
-}
-button {
-  color: white;
-  background-color: #0275d8;
-  border-style: none;
-  border-radius: 3px;
-  height: 2.65rem;
-  width: 6rem;
-  margin-top: 15px;
 }
 </style>
