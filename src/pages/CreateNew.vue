@@ -5,13 +5,13 @@
       <div class="input">
         <b-form-input
           placeholder="Title"
-          v-model="entry.data.attributes.Title"
+          v-model="entry.attributes.Title"
         />
       </div>
       <div>
         <b-form-textarea
           placeholder="Blog away!"
-          v-model="entry.data.attributes.Body"
+          v-model="entry.attributes.Body"
           rows="8"
           no-resize
         ></b-form-textarea>
@@ -26,19 +26,17 @@ export default {
   data() {
     return {
       entry: {
-        data: {
-          id: this.createId(),
-          attributes: {
-            Title: "",
-            Body: ""
-          }
+        id: this.createId(),
+        attributes: {
+          Title: "",
+          Body: ""
         }
       }
     };
   },
   methods: {
     createNewEntry() {
-      this.$store.dispatch("entries/createEntry", this.entry);
+      this.$store.dispatch("entries/createEntry", { data: this.entry });
     },
     createId() {
       const id = Math.floor(Math.random() * 10000000);
@@ -75,5 +73,14 @@ input {
 .btn-container {
   display: flex;
   justify-content: flex-end;
+}
+button {
+  color: white;
+  background-color: #0275d8;
+  border-style: none;
+  border-radius: 3px;
+  height: 2.65rem;
+  width: 6rem;
+  margin-top: 15px;
 }
 </style>
