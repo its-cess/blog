@@ -1,18 +1,26 @@
 <!-- working -->
 <template>
-  <router-link :to="{ name: 'show-entry', params: { id: entry.id } }">
-    <div class="entry-card">
-      <h3>{{ entry.attributes.Title }}</h3>
-      <p>{{ entry.attributes.Body }}</p>
-    </div>
-  </router-link>
+  <div>
+    <router-link :to="{ name: 'show-entry', params: { id: entry.id } }">
+      <div class="entry-card">
+        <h3>{{ entry.attributes.Title }}</h3>
+        <p>{{ entry.attributes.Body }}</p>
+      </div>
+    </router-link>
+    <button @click="deletePost">Delete</button>
+  </div>
 </template>
 
 <script>
 export default {
-props: ['entry'],
+  props: ["entry"],
+  methods: {
+    deletePost() {
+      this.$store.dispatch("entries/deleteEntry", this.entry.id);
+      //then push to /profile path if delete successful
+    }
+  }
 };
-
 </script>
 
 <style scoped>

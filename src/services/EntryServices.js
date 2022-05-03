@@ -16,4 +16,7 @@ export default {
   getEntries() {
     return apiClient.get('entries')
   },
+  deleteEntry(id) {
+    return apiClient.delete('entries/' + id)
+  }
 }

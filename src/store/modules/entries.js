@@ -13,9 +13,9 @@ export const mutations = {
   ADD_ENTRY(state, entry) {  
     state.entries.push(entry)
   },
-  SET_ENTRY(state, entry) {
-    state.entry = entry;
-  },
+  DELETE_ENTRY(state, id) {
+    state.entries.splice(id)
+  }
 }
 
 export const actions = {
@@ -33,12 +33,14 @@ export const actions = {
       console.log(error)
     })
   },
-  // async fetchEntry({ commit }) {
-  //   await EntryServices.getEntry()
-  //   .then(response => {
-  //     commit('SET_ENTRY', response.data.data)
-  //   })
-  // },
+  deleteEntry({commit}, id) {
+    //working, but possibly need an if check?? to check if id is in entries array?
+    //is yes, then commit delete entry? if id === entry(entries.id?).id??
+    return EntryServices.deleteEntry(id)
+    .then(() => {
+      commit('DELETE_ENTRY', id)
+    })
+  }
 }
  
   
