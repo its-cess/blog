@@ -1,6 +1,6 @@
 <template>
   <div class="form-container">
-    <form @submit.prevent="createNewEntry">
+    <form>
       <h4>New Post</h4>
       <div class="input">
         <b-form-input placeholder="Title" v-model="entry.Title" />
@@ -13,18 +13,21 @@
           no-resize
         ></b-form-textarea>
       </div>
-      <button>
-        Submit
-      </button>
-      <!-- <BaseButton size="lg" variant="primary">Submit</BaseButton> -->
+
+      <BaseButton
+        @click.prevent.native="createNewEntry"
+        size="lg"
+        variant="primary"
+        >Submit</BaseButton
+      >
     </form>
   </div>
 </template>
 
 <script>
-// import BaseButton from '../base/BaseButton.vue';
+import BaseButton from "../base/BaseButton.vue";
 export default {
-  // components: { BaseButton },
+  components: { BaseButton },
   data() {
     return {
       entry: {
@@ -37,13 +40,12 @@ export default {
   methods: {
     createNewEntry() {
       this.$store.dispatch("entries/createEntry", { data: this.entry });
-        this.entry.Title = "",
-        this.entry.Body = ""
+      (this.entry.Title = ""), (this.entry.Body = "");
     },
     createId() {
       const id = Math.floor(Math.random() * 10000000);
       return id;
-    },
+    }
     //this hardcoded test was SUCCESSFUL, need to refactor to be able to
     //put this into an action that runs the mutation to set it to state
     //and link to these inputs in data() above.
@@ -57,8 +59,6 @@ export default {
     //     }
     //   })
     // }
-
-
   }
 };
 </script>
