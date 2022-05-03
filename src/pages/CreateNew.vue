@@ -30,6 +30,15 @@ export default {
     };
   },
   methods: {
+    createNewEntry() {
+      this.$store.dispatch("entries/createEntry", { data: this.entry });
+        this.entry.Title = "",
+        this.entry.Body = ""
+    },
+    createId() {
+      const id = Math.floor(Math.random() * 10000000);
+      return id;
+    },
     //this hardcoded test was SUCCESSFUL, need to refactor to be able to
     //put this into an action that runs the mutation to set it to state
     //and link to these inputs in data() above.
@@ -44,13 +53,6 @@ export default {
     //   })
     // }
 
-    createNewEntry() {
-      this.$store.dispatch("entries/createEntry", { data: this.entry })
-    },
-    createId() {
-      const id = Math.floor(Math.random() * 10000000);
-      return id;
-    }
 
   }
 };
