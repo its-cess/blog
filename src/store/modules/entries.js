@@ -46,7 +46,7 @@ export const getters = {
   getEntries(state) {
     return state.entries
   },
-  getEntry(state) {
-    return state.entries.entry.id
-  }
+  // getEntry(state) {
+  //   return state.entries.entry.id
+  // }
 }

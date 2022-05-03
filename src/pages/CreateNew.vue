@@ -3,15 +3,12 @@
     <form @submit.prevent="createNewEntry">
       <h4>New Post</h4>
       <div class="input">
-        <b-form-input
-          placeholder="Title"
-          v-model="entry.attributes.Title"
-        />
+        <b-form-input placeholder="Title" v-model="entry.Title" />
       </div>
       <div>
         <b-form-textarea
           placeholder="Blog away!"
-          v-model="entry.attributes.Body"
+          v-model="entry.Body"
           rows="8"
           no-resize
         ></b-form-textarea>
@@ -27,34 +24,34 @@ export default {
     return {
       entry: {
         id: this.createId(),
-        attributes: {
-          Title: "",
-          Body: ""
-        }
+        Title: "",
+        Body: ""
       }
     };
   },
   methods: {
+    //this hardcoded test was SUCCESSFUL, need to refactor to be able to
+    //put this into an action that runs the mutation to set it to state
+    //and link to these inputs in data() above.
+
+    // createNewEntry() {
+    //   axios.post('http://localhost:1337/api/entries', {
+    //     data: {
+    //       id: 1230948,
+    //       Title: 'API Test',
+    //       Body: 'Test using hard coded API request'
+    //     }
+    //   })
+    // }
+
     createNewEntry() {
-      this.$store.dispatch("entries/createEntry", { data: this.entry });
+      this.$store.dispatch("entries/createEntry", { data: this.entry })
     },
     createId() {
       const id = Math.floor(Math.random() * 10000000);
       return id;
     }
-    // createEntryObject() {
-    //   const id = Math.floor(Math.random() * 10000000)
-    //   return {
-    //     data: {
-    //       "id": id,
-    //       "attributes": {
-    //         Title: '',
-    //         Body: ''
-    //       }
-    //     }
 
-    //   }
-    // },
   }
 };
 </script>
