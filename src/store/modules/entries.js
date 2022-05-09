@@ -48,7 +48,7 @@ export const getters = {
   getEntries(state) {
     return state.entries
   },
-  // getEntry(state) {
-  //   return state.entries.entry.id
+  // reverseEntries(state) {
+  //   return state.entries.slice().reverse()
   // }
 }
