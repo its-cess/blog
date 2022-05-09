@@ -25,8 +25,13 @@ export default {
   props: ["entry"],
   methods: {
     deletePost() {
-      this.$store.dispatch("entries/deleteEntry", this.entry.id);
-      //then push to /profile path if delete successful
+      this.$store.dispatch("entries/deleteEntry", this.entry.id)
+      .then(() => {
+        this.$store.dispatch("entries/fetchEntries")
+      })
+      .catch(error => {
+        console.log(error)
+      });
     }
   }
 };

@@ -44,6 +44,9 @@ export default {
         this.$router.push({
           name: "show-entry",
           params: { id: this.entry.id }
+        })
+        .catch(error => {
+          console.log(error)
         });
         this.entry.Title = "",
         this.entry.Body = ""
