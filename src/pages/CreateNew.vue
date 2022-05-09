@@ -39,8 +39,15 @@ export default {
   },
   methods: {
     createNewEntry() {
-      this.$store.dispatch("entries/createEntry", { data: this.entry });
-      (this.entry.Title = ""), (this.entry.Body = "");
+      this.$store.dispatch("entries/createEntry", { data: this.entry })
+      .then(() => {
+        this.$router.push({
+          name: "show-entry",
+          params: { id: this.entry.id }
+        });
+        this.entry.Title = "",
+        this.entry.Body = ""
+      });
     },
     createId() {
       const id = Math.floor(Math.random() * 10000000);
