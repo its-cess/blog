@@ -10,7 +10,8 @@ export default {};
 
 <style scoped>
 div {
-  margin: 3rem;
+  max-width: 1100px;
+  margin: 3rem auto;
   padding: 2rem;
 }
 </style>

@@ -74,10 +74,6 @@ export default {
 </script>
 
 <style scoped>
-.form-container {
-  margin: 0 0.8rem;
-  padding: 0 2.5rem;
-}
 input {
   font-size: 1.2rem;
 }

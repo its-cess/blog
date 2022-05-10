@@ -14,7 +14,8 @@ export default {};
 
 <style scoped>
 .nav-bar {
-  margin: 1rem;
+  max-width: 1600px;
+  margin: 1rem auto;
   padding: 1.5rem;
 }
 </style>

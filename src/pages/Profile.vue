@@ -22,9 +22,3 @@ export default {
 };
 </script>
 
-<style scoped>
-.profile-container {
-  margin: 0;
-  padding: 0 2.5rem;
-}
-</style>
