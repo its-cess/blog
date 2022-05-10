@@ -55,5 +55,6 @@ a {
 .delete-container {
   display: flex;
   justify-content: flex-end;
+  margin-right: 2rem;
 }
 </style>

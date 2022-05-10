@@ -46,5 +46,6 @@ export default {
 .scroll {
   overflow-y: scroll;
   max-height: 30rem;
+  width: 45rem;
 }
 </style>
