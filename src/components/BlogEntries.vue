@@ -8,7 +8,7 @@ working -->
         <!-- v-for="entry in entries.entries" -->
         <!-- works, but how do you display the computed property in the for loop? -->
       <EntryCard
-        v-for="entry in entries.entries.slice().reverse()"
+        v-for="entry in latestEntries"
         :key="entry.id"
         :entry="entry"
       />
@@ -17,7 +17,7 @@ working -->
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 import EntryCard from "../components/EntryCard.vue";
 
 export default {
@@ -28,12 +28,8 @@ export default {
     this.$store.dispatch("entries/fetchEntries");
   },
   computed: {
-    ...mapState(["entries", "user"]),
-
-    
-    // displayReverseEntries() {
-    //   return this.$store.getters.reverseEntries;
-    // }
+    ...mapState(["entries", "user"]), 
+    ...mapGetters("entries", ["latestEntries"])
   }
 };
 </script>

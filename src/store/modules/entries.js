@@ -48,7 +48,7 @@ export const getters = {
   getEntries(state) {
     return state.entries
   },
-  // reverseEntries(state) {
-  //   return state.entries.slice().reverse()
-  // }
+  latestEntries(state) {
+    return state.entries.slice().reverse()
+  }
 }
