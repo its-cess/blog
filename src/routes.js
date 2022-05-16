@@ -3,6 +3,7 @@ import router from 'vue-router'
 import Profile from './pages/Profile'
 import CreateNew from './pages/CreateNew'
 import ShowEntry from './pages/ShowEntry'
+import NotFound from './pages/NotFound'
 
 Vue.use(router)
 
@@ -25,5 +26,14 @@ export default new router({
       path: '/new',
       name: 'create-new', 
       component: CreateNew },
+    {
+      path: '/404',
+      name: '404',
+      component: NotFound
+    },
+    {
+      path: '*',
+      redirect: { name: '404' }
+    }
   ]
 }) 
