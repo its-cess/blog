@@ -7,7 +7,7 @@
         <b-form-input
           id="email"
           type="email"
-          v-model="form.email"
+          v-model="user.email"
           required
         ></b-form-input>
 
@@ -15,7 +15,7 @@
         <b-form-input
           id="password"
           type="password"
-          v-model="form.password"
+          v-model="user.password"
           required
         ></b-form-input>
 
@@ -29,15 +29,20 @@
 export default {
   data() {
     return {
-      form: {
+      user: {
         email: "",
         password: ""
       }
     };
   },
   methods: {
+    //submitting correct credentials successfully works. receive jwt token in response.
+    //still need to use the response to set the token and all of that???? somehow?????
     onSubmit() {
-      alert("submitted!");
+      this.$store.dispatch("user/login", {
+        identifier: this.user.email,
+        password: this.user.password
+      });
     }
   }
 };
