@@ -19,7 +19,7 @@ export const actions = {
         commit("SET_USER", response.data);
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.response);
       });
   }
 };

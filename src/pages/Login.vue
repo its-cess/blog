@@ -39,10 +39,21 @@ export default {
     //submitting correct credentials successfully works. receive jwt token in response.
     //still need to use the response to set the token and all of that???? somehow?????
     onSubmit() {
-      this.$store.dispatch("user/login", {
-        identifier: this.user.email,
-        password: this.user.password
-      });
+      this.$store
+        .dispatch("user/login", {
+          identifier: this.user.email,
+          password: this.user.password
+        })
+        .then(() => {
+          this.$router
+            .push({
+              name: "profile"
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+          (this.user.email = ""), (this.user.password = "");
+        });
     }
   }
 };
