@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import router from 'vue-router'
+import Login from './pages/Login'
 import Profile from './pages/Profile'
 import CreateNew from './pages/CreateNew'
 import ShowEntry from './pages/ShowEntry'
@@ -11,6 +12,11 @@ export default new router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
+    },
     { 
       path: '', 
       name: 'profile',
