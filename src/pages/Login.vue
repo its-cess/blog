@@ -26,6 +26,8 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   data() {
     return {
@@ -33,24 +35,32 @@ export default {
       password: ""
     };
   },
+  computed: {
+    ...mapState("authentication", ["token"]),
+    isAuthenticated() {
+      return this.$store.state.authentication.token;
+    }
+  },
   methods: {
-    //submitting correct credentials successfully works. receive jwt token in response.
-    //still need to use the response to set the token and all of that???? somehow?????
-    async onSubmit() {
+    onSubmit() {
       this.$store
         .dispatch("authentication/login", {
           identifier: this.email,
           password: this.password
         })
+        //need to add if check?? if not authorized, dont push?
         .then(() => {
-          this.$router
-            .push({
+          if (!this.isAuthenticated) {
+            alert("Wrong email/password");
+          } else {
+            this.$router.push({
               name: "profile"
-            })
-            .catch((error) => {
-              console.log(error);
             });
+          }
           (this.email = ""), (this.password = "");
+        })
+        .catch((error) => {
+          console.log(error);
         });
     }
   }
