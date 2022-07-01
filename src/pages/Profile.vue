@@ -4,7 +4,7 @@
     <b-row>
       <b-col cols="3"><UserInfo /></b-col>
       <b-col cols="9">
-          <BlogEntries />  
+        <BlogEntries />
       </b-col>
     </b-row>
   </b-container>
@@ -17,8 +17,7 @@ import BlogEntries from "../components/BlogEntries.vue";
 export default {
   components: {
     UserInfo,
-    BlogEntries,
+    BlogEntries
   }
 };
 </script>
-
