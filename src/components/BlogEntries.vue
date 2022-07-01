@@ -2,7 +2,7 @@
 working -->
 <template>
   <div class="blog-container">
-    <h1>{{ user.name }}'s Blog Posts</h1>
+    <h1>{{ authentication.user.username }}'s Blog Posts</h1>
 
     <div class="scroll">
       <EntryCard
@@ -26,7 +26,7 @@ export default {
     this.$store.dispatch("entries/fetchEntries");
   },
   computed: {
-    ...mapState(["entries", "user"]), 
+    ...mapState(["entries", "authentication"]),
     ...mapGetters("entries", ["latestEntries"])
   }
 };

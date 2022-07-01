@@ -1,17 +1,17 @@
 <template>
   <div>
     <img src="" />
-    <p>Name: {{ user.name }}</p>
-    <p>Location: {{ user.location }}</p>
+    <p>Name: {{ authentication.user.username }}</p>
+    <p>Location:</p>
     <!-- dropbown box. countrypicker dependency. vue-country-region-select -->
-    <p>Birthday: {{ user.birthday }}</p>
-    <p>Gender: {{ user.gender }}</p>
+    <p>Birthday:</p>
+    <p>Gender:</p>
     <p>
       Interests: (separate component, for-loop to output ordered list of
       interests, dropdown picker??)
     </p>
     <!-- member since: date when signed up. sign in functionality, store that data? -->
-    <p>Member Since: {{ user.memberSince }}</p>
+    <p>Member Since:</p>
   </div>
 </template>
 
@@ -20,7 +20,7 @@ import { mapState } from "vuex";
 
 export default {
   computed: {
-    ...mapState(["user"])
+    ...mapState(["authentication"])
   }
 };
 </script>
