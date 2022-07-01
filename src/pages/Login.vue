@@ -48,7 +48,6 @@ export default {
           identifier: this.email,
           password: this.password
         })
-        //need to add if check?? if not authorized, dont push?
         .then(() => {
           if (!this.isAuthenticated) {
             alert("Wrong email/password");

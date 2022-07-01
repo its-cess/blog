@@ -8,10 +8,7 @@
       </div>
     </router-link>
     <div class="delete-container">
-      <BaseButton 
-        size="sm" 
-        variant="outline-primary" 
-        @click.native="deletePost"
+      <BaseButton size="sm" variant="outline-primary" @click.native="deletePost"
         >Delete
       </BaseButton>
     </div>
@@ -25,15 +22,16 @@ export default {
   props: ["entry"],
   methods: {
     deletePost() {
-      this.$store.dispatch("entries/deleteEntry", this.entry.id)
-      .then(() => {
-        this.$store.dispatch("entries/fetchEntries")
-      })
-      .catch(error => {
-        console.log(error)
-      });
+      this.$store
+        .dispatch("entries/deleteEntry", this.entry.id)
+        .then(() => {
+          this.$store.dispatch("entries/fetchEntries");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
-  },
+  }
 };
 </script>
 
@@ -41,7 +39,10 @@ export default {
 .main-container {
   display: flex;
   flex-direction: column;
-  border-bottom: 3px solid #0275d8;
+  border: 1px solid #0275d8;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 2px;
+  margin: 1rem;
 }
 .entry-card {
   margin: 2rem 0 0 0;

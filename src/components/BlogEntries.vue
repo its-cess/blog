@@ -33,6 +33,9 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+  margin-left: 15px;
+}
 .blog-container {
   margin-top: -60px;
   padding: 0 6rem 0 3rem;

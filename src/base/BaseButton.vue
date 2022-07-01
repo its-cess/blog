@@ -9,13 +9,14 @@
 
 <script>
 export default {
-  props: ['size', 'variant']
+  props: ["size", "variant"]
 };
 </script>
 
 <style scoped>
 .btn {
   margin: 0.5rem 0;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 2px;
 }
 .btn:hover {
   color: white;
