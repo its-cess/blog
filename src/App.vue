@@ -1,6 +1,5 @@
 <template>
   <app-container>
-    <app-header v-if="!['404', 'login'].includes($route.name)"></app-header>
     <app-nav v-if="!['404', 'login'].includes($route.name)"></app-nav>
     <router-view></router-view>
   </app-container>

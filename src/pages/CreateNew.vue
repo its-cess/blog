@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import apiClient from "@/services/index.js";
 import BaseButton from "../base/BaseButton.vue";
 export default {
   components: { BaseButton },
@@ -39,36 +40,24 @@ export default {
   },
   methods: {
     createNewEntry() {
-      this.$store.dispatch("entries/createEntry", { data: this.entry })
-      .then(() => {
-        this.$router.push({
-          name: "show-entry",
-          params: { id: this.entry.id }
-        })
-        .catch(error => {
-          console.log(error)
+      apiClient
+        .post("http://localhost:1337/api/entries", { data: this.entry })
+        .then(() => {
+          this.$router
+            .push({
+              name: "show-entry",
+              params: { id: this.entry.id }
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+          (this.entry.Title = ""), (this.entry.Body = "");
         });
-        this.entry.Title = "",
-        this.entry.Body = ""
-      });
     },
     createId() {
       const id = Math.floor(Math.random() * 10000000);
       return id;
     }
-    //this hardcoded test was SUCCESSFUL, need to refactor to be able to
-    //put this into an action that runs the mutation to set it to state
-    //and link to these inputs in data() above.
-
-    // createNewEntry() {
-    //   axios.post('http://localhost:1337/api/entries', {
-    //     data: {
-    //       id: 1230948,
-    //       Title: 'API Test',
-    //       Body: 'Test using hard coded API request'
-    //     }
-    //   })
-    // }
   }
 };
 </script>
