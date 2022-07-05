@@ -7,7 +7,13 @@ export default {
   getEntries() {
     return apiClient.get("entries");
   },
+  getEntry(id) {
+    return apiClient.get("entries/" + id);
+  },
   deleteEntry(id) {
     return apiClient.delete("entries/" + id);
+  },
+  editEntry(id) {
+    return apiClient.put("entries/" + id);
   }
 };

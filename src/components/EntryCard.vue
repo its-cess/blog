@@ -8,7 +8,14 @@
       </div>
     </router-link>
     <div class="delete-container">
-      <BaseButton size="sm" variant="outline-primary" @click.native="deletePost"
+      <BaseButton size="sm" variant="outline-primary" @click.native="editPost"
+        >Edit
+      </BaseButton>
+      <BaseButton
+        size="sm"
+        variant="outline-primary"
+        class="button"
+        @click.native="deletePost"
         >Delete
       </BaseButton>
     </div>
@@ -30,6 +37,12 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+    editPost() {
+      this.$router.push({
+        name: "edit-post",
+        params: { id: this.entry.id }
+      });
     }
   }
 };
@@ -57,5 +70,9 @@ a {
   display: flex;
   justify-content: flex-end;
   margin-right: 2rem;
+}
+
+.button {
+  margin-left: 0.5rem;
 }
 </style>

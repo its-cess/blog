@@ -11,7 +11,7 @@ export default {};
 <style scoped>
 div {
   max-width: 1100px;
-  margin: 3rem auto;
+  margin: 1rem auto;
   padding: 2rem;
 }
 </style>
