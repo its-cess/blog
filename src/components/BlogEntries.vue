@@ -1,33 +1,35 @@
-<!--EventList.vue
-working -->
 <template>
   <div class="blog-container">
-    <h1>{{ authentication.user.username }}'s Blog Posts</h1>
+    <h1>Blog Posts</h1>
 
     <div class="scroll">
-      <EntryCard
-        v-for="entry in latestEntries"
-        :key="entry.id"
-        :entry="entry"
-      />
+      <EntryCard v-for="entry in entries" :key="entry.id" :entry="entry" />
     </div>
   </div>
 </template>
 
 <script>
-import { mapState, mapGetters } from "vuex";
 import EntryCard from "../components/EntryCard.vue";
+import apiClient from "@/services/index.js";
 
 export default {
   components: {
     EntryCard
   },
-  created() {
-    this.$store.dispatch("entries/fetchEntries");
+  data() {
+    return {
+      entries: []
+    };
   },
-  computed: {
-    ...mapState(["entries", "authentication"]),
-    ...mapGetters("entries", ["latestEntries"])
+  created() {
+    apiClient
+      .get("entries")
+      .then((response) => {
+        this.entries = response.data.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 };
 </script>

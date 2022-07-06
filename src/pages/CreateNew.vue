@@ -40,19 +40,17 @@ export default {
   },
   methods: {
     createNewEntry() {
-      apiClient
-        .post("http://localhost:1337/api/entries", { data: this.entry })
-        .then(() => {
-          this.$router
-            .push({
-              name: "show-entry",
-              params: { id: this.entry.id }
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-          (this.entry.Title = ""), (this.entry.Body = "");
-        });
+      apiClient.post("entries", { data: this.entry }).then(() => {
+        this.$router
+          .push({
+            name: "show-entry",
+            params: { id: this.entry.id }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        (this.entry.Title = ""), (this.entry.Body = "");
+      });
     },
     createId() {
       const id = Math.floor(Math.random() * 10000000);

@@ -26,8 +26,7 @@ export default new router({
     {
       path: "/entries/:id",
       name: "show-entry",
-      component: ShowEntry,
-      props: true
+      component: ShowEntry
     },
     {
       path: "/new",
@@ -35,10 +34,9 @@ export default new router({
       component: CreateNew
     },
     {
-      path: "/edit",
+      path: "/edit/:id",
       name: "edit-post",
-      component: EditPost,
-      props: true
+      component: EditPost
     },
     {
       path: "/404",
