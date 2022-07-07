@@ -2,18 +2,26 @@
   <div class="form-container">
     <h4>Edit Post</h4>
     <div class="input">
-      <b-form-input v-model="entryToEdit.Title" :placeholder="entry.Title" />
+      <label for="title">TITLE</label>
+      <input
+        type="text"
+        id="title"
+        :value="this.entry.Title"
+        @input="editTitle"
+      />
     </div>
     <div>
-      <b-form-textarea
-        :placeholder="entry.Body"
-        v-model="entryToEdit.Body"
+      <label for="body">BODY</label>
+      <textarea
+        id="body"
+        :value="this.entry.Body"
+        @input="editBody"
         rows="8"
         no-resize
-      ></b-form-textarea>
+      ></textarea>
     </div>
 
-    <BaseButton @click.prevent.native="editEntry" size="lg" variant="primary"
+    <BaseButton @click.prevent.native="submitEntry" size="lg" variant="primary"
       >Update</BaseButton
     >
   </div>
@@ -29,10 +37,6 @@ export default {
     return {
       entry: {
         id: null,
-        Title: "",
-        Body: ""
-      },
-      entryToEdit: {
         Title: "",
         Body: ""
       }
@@ -51,9 +55,15 @@ export default {
       });
   },
   methods: {
-    editEntry() {
+    editTitle(event) {
+      this.entry.Title = event.target.value;
+    },
+    editBody(event) {
+      this.entry.Body = event.target.value;
+    },
+    submitEntry() {
       apiClient
-        .put("entries/" + this.entry.id, { data: this.entryToEdit })
+        .put("entries/" + this.entry.id, { data: this.entry })
         .then(() => {
           this.$router
             .push({
@@ -69,11 +79,22 @@ export default {
 </script>
 
 <style scoped>
+label {
+  margin-bottom: 0;
+  font-size: 12px;
+}
 input {
   font-size: 1.2rem;
+  padding: 6px;
+  width: 100%;
 }
 .input {
-  margin: 0.5rem 0;
+  margin: 0.75rem 0;
+}
+textarea {
+  resize: none;
+  padding: 8px;
+  width: 100%;
 }
 .btn-container {
   display: flex;
