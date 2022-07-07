@@ -16,7 +16,7 @@
 
     <!-- LOGIN modal -->
     <b-modal id="modal-1" centered title="LOGIN" hide-footer>
-      <b-form @submit.prevent="onSubmit">
+      <b-form @submit.prevent="handleLogin">
         <b-form-group class="group">
           <label for="email">EMAIL</label>
           <b-form-input
@@ -34,9 +34,9 @@
             required
           ></b-form-input>
 
-          <b-button type="submit" variant="primary" class="login-btn"
-            >LOGIN</b-button
-          >
+          <b-button type="submit" variant="primary" class="login-btn">
+            LOGIN
+          </b-button>
         </b-form-group>
       </b-form>
     </b-modal>
@@ -44,7 +44,36 @@
 </template>
 
 <script>
-export default {};
+import apiClient from "@/services/index.js";
+
+export default {
+  data() {
+    return {
+      email: "",
+      password: ""
+    };
+  },
+  methods: {
+    async handleLogin() {
+      await apiClient
+        .post("auth/local", {
+          identifier: this.email,
+          password: this.password
+        })
+        .then((response) => {
+          if (response.status === 200) {
+            localStorage.setItem("token", response.data.jwt);
+            this.$root.$emit("bv::hide::modal", "modal-1");
+          } else {
+            return;
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }
+};
 </script>
 
 <style scoped>
