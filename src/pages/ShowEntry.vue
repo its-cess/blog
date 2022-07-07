@@ -44,7 +44,7 @@ export default {
       if (token) {
         this.loggedIn = true;
       } else {
-        return;
+        this.loggedIn = false;
       }
     });
   },

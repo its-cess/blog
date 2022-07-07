@@ -12,16 +12,22 @@
     <!-- LOGIN nav button (open modal) -->
     <div class="login">
       <b-button
-        v-if="!loggedIn"
+        v-if="!loggedIn && profileRoute"
         v-b-modal.loginModal
         variant="outline-secondary"
       >
         LOGIN
       </b-button>
 
-      <b-button v-else variant="outline-secondary" @click="handleLogout"
-        >LOGOUT</b-button
+      <b-button
+        v-else-if="loggedIn && profileRoute"
+        variant="outline-secondary"
+        @click="handleLogout"
       >
+        LOGOUT
+      </b-button>
+
+      <b-button v-else style="display: none"></b-button>
     </div>
 
     <!-- LOGIN modal -->
@@ -63,6 +69,15 @@ export default {
       password: "",
       loggedIn: false
     };
+  },
+  computed: {
+    profileRoute() {
+      if (this.$route.name === "profile") {
+        return true;
+      } else {
+        return false;
+      }
+    }
   },
   methods: {
     async handleLogin() {
