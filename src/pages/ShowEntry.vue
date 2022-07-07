@@ -68,7 +68,7 @@ h2 {
 }
 .entry-container {
   margin: 0;
-  padding: 0 3.2rem;
+  padding: 0 2.5rem;
   white-space: pre-wrap;
 }
 .delete-container {

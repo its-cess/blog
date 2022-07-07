@@ -79,6 +79,9 @@ export default {
 </script>
 
 <style scoped>
+.form-container {
+  margin: 0 0.5rem;
+}
 label {
   margin-bottom: 0;
   font-size: 12px;
