@@ -69,6 +69,7 @@ h2 {
 .entry-container {
   margin: 0;
   padding: 0 3.2rem;
+  white-space: pre-wrap;
 }
 .delete-container {
   display: flex;

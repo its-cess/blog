@@ -37,6 +37,7 @@ export default {
   margin: 1rem 0 0 0;
   padding: 1rem 2rem 1rem 2rem;
   cursor: pointer;
+  white-space: pre-wrap;
 }
 
 a {
