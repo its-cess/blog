@@ -7,12 +7,14 @@
     </div>
     <div class="delete-container">
       <BaseButton
+        v-if="loggedIn"
         size="sm"
         variant="outline-primary"
         @click.native="startEditPost"
         >Edit
       </BaseButton>
       <BaseButton
+        v-if="loggedIn"
         size="sm"
         variant="outline-primary"
         class="button"
@@ -31,12 +33,19 @@ export default {
   components: { BaseButton },
   data() {
     return {
-      entry: {}
+      entry: {},
+      loggedIn: false
     };
   },
   created() {
     apiClient.get("entries/" + this.$route.params.id).then((response) => {
       this.entry = response.data.data;
+      let token = localStorage.getItem("token");
+      if (token) {
+        this.loggedIn = true;
+      } else {
+        return;
+      }
     });
   },
   methods: {

@@ -11,11 +11,21 @@
 
     <!-- LOGIN nav button (open modal) -->
     <div class="login">
-      <b-button v-b-modal.modal-1 variant="outline-secondary">LOGIN</b-button>
+      <b-button
+        v-if="!loggedIn"
+        v-b-modal.loginModal
+        variant="outline-secondary"
+      >
+        LOGIN
+      </b-button>
+
+      <b-button v-else variant="outline-secondary" @click="handleLogout"
+        >LOGOUT</b-button
+      >
     </div>
 
     <!-- LOGIN modal -->
-    <b-modal id="modal-1" centered title="LOGIN" hide-footer>
+    <b-modal id="loginModal" centered title="LOGIN" hide-footer>
       <b-form @submit.prevent="handleLogin">
         <b-form-group class="group">
           <label for="email">EMAIL</label>
@@ -50,7 +60,8 @@ export default {
   data() {
     return {
       email: "",
-      password: ""
+      password: "",
+      loggedIn: false
     };
   },
   methods: {
@@ -63,7 +74,8 @@ export default {
         .then((response) => {
           if (response.status === 200) {
             localStorage.setItem("token", response.data.jwt);
-            this.$root.$emit("bv::hide::modal", "modal-1");
+            this.$root.$emit("bv::hide::modal", "loginModal");
+            this.loggedIn = true;
           } else {
             return;
           }
@@ -71,6 +83,11 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+      (this.email = ""), (this.password = "");
+    },
+    handleLogout() {
+      localStorage.removeItem("token");
+      this.loggedIn = false;
     }
   }
 };
