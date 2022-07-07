@@ -1,11 +1,11 @@
 <template>
   <div>
     <img src="" />
-    <p>Name: {{ authentication.user.username }}</p>
+    <p>Name:</p>
     <p>Location:</p>
     <!-- dropbown box. countrypicker dependency. vue-country-region-select -->
     <p>Birthday:</p>
-    <p>Gender:</p>
+
     <p>
       Interests: (separate component, for-loop to output ordered list of
       interests, dropdown picker??)
@@ -16,11 +16,5 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-
-export default {
-  computed: {
-    ...mapState(["authentication"])
-  }
-};
+export default {};
 </script>

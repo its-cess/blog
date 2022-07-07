@@ -1,12 +1,12 @@
 <!-- working -->
 <template>
   <div class="main-container">
-    <router-link :to="{ name: 'show-entry', params: { id: entry.id } }">
-      <div class="entry-card">
+    <div class="entry-card">
+      <router-link :to="{ name: 'show-entry', params: { id: entry.id } }">
         <h3>{{ entry.attributes.Title }}</h3>
-        <p class="body">{{ entry.attributes.Body }}</p>
-      </div>
-    </router-link>
+      </router-link>
+      <p class="body">{{ entry.attributes.Body }}</p>
+    </div>
   </div>
 </template>
 

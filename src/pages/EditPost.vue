@@ -90,6 +90,8 @@ input {
   font-size: 1.2rem;
   padding: 6px;
   width: 100%;
+  border: 1px solid #ced4da;
+  border-radius: 3px;
 }
 .input {
   margin: 0.75rem 0;
@@ -98,6 +100,8 @@ textarea {
   resize: none;
   padding: 8px;
   width: 100%;
+  border: 1px solid #ced4da;
+  border-radius: 3px;
 }
 .btn-container {
   display: flex;

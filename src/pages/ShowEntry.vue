@@ -67,7 +67,7 @@ h2 {
   margin-bottom: 25px;
 }
 .entry-container {
-  margin: 0;
+  margin: 1.78rem 0;
   padding: 0 2.5rem;
   white-space: pre-wrap;
 }
