@@ -44,7 +44,7 @@ h1 {
 }
 .scroll {
   overflow-y: scroll;
-  max-height: 30rem;
+  max-height: 45rem;
   width: 45rem;
 }
 </style>

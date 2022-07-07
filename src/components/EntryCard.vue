@@ -4,7 +4,7 @@
     <router-link :to="{ name: 'show-entry', params: { id: entry.id } }">
       <div class="entry-card">
         <h3>{{ entry.attributes.Title }}</h3>
-        <p>{{ entry.attributes.Body }}</p>
+        <p class="body">{{ entry.attributes.Body }}</p>
       </div>
     </router-link>
   </div>
@@ -34,13 +34,17 @@ export default {
   margin: 1rem;
 }
 .entry-card {
-  margin: 2rem 0 0 0;
-  padding: 1rem 0 0 1rem;
+  margin: 1rem 0 0 0;
+  padding: 1rem 2rem 1rem 2rem;
   cursor: pointer;
 }
 
 a {
   text-decoration: none;
   color: inherit;
+}
+
+.body {
+  margin-top: 1.5rem;
 }
 </style>

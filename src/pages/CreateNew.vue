@@ -3,11 +3,13 @@
     <form>
       <h4>New Post</h4>
       <div class="input">
-        <b-form-input placeholder="Title" v-model="entry.Title" />
+        <label for="title">TITLE</label>
+        <b-form-input id="title" v-model="entry.Title" />
       </div>
       <div>
+        <label for="body">BODY</label>
         <b-form-textarea
-          placeholder="Blog away!"
+          id="body"
           v-model="entry.Body"
           rows="8"
           no-resize
@@ -61,6 +63,10 @@ export default {
 </script>
 
 <style scoped>
+label {
+  margin-bottom: 0;
+  font-size: 12px;
+}
 input {
   font-size: 1.2rem;
 }
