@@ -53,6 +53,7 @@ export default {
       apiClient
         .delete("entries/" + this.entry.id)
         .then(() => {
+          this.toastDelete();
           this.$router.push({
             name: "profile"
           });
@@ -65,6 +66,14 @@ export default {
       this.$router.push({
         name: "edit-post",
         params: { id: this.entry.id }
+      });
+    },
+    toastDelete() {
+      this.$root.$bvToast.toast("Post deleted", {
+        toaster: "b-toaster-bottom-center",
+        autoHideDelay: 3000,
+        noCloseButton: true,
+        variant: "danger"
       });
     }
   }

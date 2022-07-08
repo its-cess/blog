@@ -65,6 +65,7 @@ export default {
       apiClient
         .put("entries/" + this.entry.id, { data: this.entry })
         .then(() => {
+          this.toastUpdate();
           this.$router
             .push({
               name: "profile"
@@ -73,6 +74,14 @@ export default {
               console.log(error);
             });
         });
+    },
+    toastUpdate() {
+      this.$root.$bvToast.toast("Post updated!", {
+        toaster: "b-toaster-bottom-center",
+        autoHideDelay: 3000,
+        noCloseButton: true,
+        variant: "success"
+      });
     }
   }
 };
