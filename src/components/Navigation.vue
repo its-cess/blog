@@ -4,7 +4,12 @@
       <b-nav-item :to="{ name: 'profile' }" active-class="active" exact
         >Profile</b-nav-item
       >
-      <b-nav-item :to="{ name: 'create-new' }" active-class="active" exact>
+      <b-nav-item
+        :to="{ name: 'create-new' }"
+        active-class="active"
+        exact
+        :disabled="!loggedIn"
+      >
         Create New Post</b-nav-item
       >
     </b-nav>
